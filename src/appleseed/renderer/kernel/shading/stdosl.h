@@ -533,6 +533,10 @@ closure color as_disney(
         float  clearcoat,
         float  clearcoat_gloss) BUILTIN;
 
+closure color as_lommel(
+    normal N,
+    float  thickness) BUILTIN;
+
 // Renderer state
 int backfacing () BUILTIN;
 int raytype (string typename) BUILTIN;

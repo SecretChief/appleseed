@@ -102,6 +102,12 @@ namespace
                     "lambertian_brdf",
                     "osl_lambert");
 
+            m_lommel_brdf =
+                create_and_register_bsdf(
+                    LommelID,
+                    "lommel_brdf",
+                    "osl_lommel");
+
             m_orennayar_brdf =
                 create_and_register_bsdf(
                     OrenNayarID,
@@ -336,6 +342,7 @@ namespace
         auto_release_ptr<BSDF>      m_ashikhmin_shirley_brdf;
         auto_release_ptr<BSDF>      m_diffuse_btdf;
         auto_release_ptr<BSDF>      m_lambertian_brdf;
+        auto_release_ptr<BSDF>      m_lommel_brdf;
         auto_release_ptr<BSDF>      m_microfacet_beckmann_brdf;
         auto_release_ptr<BSDF>      m_microfacet_beckmann_btdf;
         auto_release_ptr<BSDF>      m_microfacet_blinn_brdf;

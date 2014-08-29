@@ -39,6 +39,7 @@
 #include "renderer/modeling/bsdf/ibsdffactory.h"
 #include "renderer/modeling/bsdf/kelemenbrdf.h"
 #include "renderer/modeling/bsdf/lambertianbrdf.h"
+#include "renderer/modeling/bsdf/lommelbrdf.h"
 #include "renderer/modeling/bsdf/microfacetbrdf.h"
 #include "renderer/modeling/bsdf/orennayarbrdf.h"
 #include "renderer/modeling/bsdf/specularbrdf.h"
@@ -75,6 +76,7 @@ BSDFFactoryRegistrar::BSDFFactoryRegistrar()
     register_factory(auto_ptr<FactoryType>(new DisneyBRDFFactory()));
     register_factory(auto_ptr<FactoryType>(new KelemenBRDFFactory()));
     register_factory(auto_ptr<FactoryType>(new LambertianBRDFFactory()));
+    register_factory(auto_ptr<FactoryType>(new LommelBRDFFactory()));
     register_factory(auto_ptr<FactoryType>(new MicrofacetBRDFFactory()));
     register_factory(auto_ptr<FactoryType>(new OrenNayarBRDFFactory()));
     register_factory(auto_ptr<FactoryType>(new SpecularBRDFFactory()));

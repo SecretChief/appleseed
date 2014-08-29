@@ -1200,6 +1200,8 @@ set (renderer_modeling_bsdf_sources
     renderer/modeling/bsdf/kelemenbrdf.h
     renderer/modeling/bsdf/lambertianbrdf.cpp
     renderer/modeling/bsdf/lambertianbrdf.h
+    renderer/modeling/bsdf/lommelbrdf.cpp
+    renderer/modeling/bsdf/lommelbrdf.h
     renderer/modeling/bsdf/microfacetbrdf.cpp
     renderer/modeling/bsdf/microfacetbrdf.h
     renderer/modeling/bsdf/nullbsdf.h

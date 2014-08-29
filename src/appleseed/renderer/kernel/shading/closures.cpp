@@ -107,6 +107,12 @@ namespace
         OSL::Vec3       N;
     };
 
+    struct LommelBRDFClosureParams
+    {
+        OSL::Vec3        N;
+        float           thickness;
+    };
+
     struct OrenNayarBRDFClosureParams
     {
         OSL::Vec3       N;
@@ -293,6 +299,24 @@ void CompositeClosure::process_closure_tree(
                     values.m_reflectance_multiplier = 1.0;
 
                     add_closure<LambertianBRDFInputValues>(
+                        static_cast<ClosureID>(c->id),
+                        w,
+                        Vector3d(p->N),
+                        values);
+                }
+                break;
+
+              case LommelID:
+                {
+                    const LommelBRDFClosureParams* p =
+                        reinterpret_cast<const LommelBRDFClosureParams*>(c->data());
+
+                    LommelBRDFInputValues values;
+                    values.m_reflectance.set(1.0f);
+                    values.m_reflectance_multiplier = 1.0;
+                    values.m_thickness = p->thickness;
+
+                    add_closure<LommelBRDFInputValues>(
                         static_cast<ClosureID>(c->id),
                         w,
                         Vector3d(p->N),
@@ -666,6 +690,10 @@ void register_appleseed_closures(OSL::ShadingSystem& shading_system)
                                    CLOSURE_FLOAT_PARAM(DisneyBRDFClosureParams, clearcoat),
                                    CLOSURE_FLOAT_PARAM(DisneyBRDFClosureParams, clearcoat_gloss),
                                    CLOSURE_FINISH_PARAM(DisneyBRDFClosureParams) } },
+
+        { "as_lommel", LommelID, { CLOSURE_VECTOR_PARAM(LommelBRDFClosureParams, N),
+                                   CLOSURE_FLOAT_PARAM(LommelBRDFClosureParams, thickness),
+                                   CLOSURE_FINISH_PARAM(LommelBRDFClosureParams) } },
 
         { "as_oren_nayar", OrenNayarID, { CLOSURE_VECTOR_PARAM(OrenNayarBRDFClosureParams, N),
                                           CLOSURE_FLOAT_PARAM(OrenNayarBRDFClosureParams, roughness),
